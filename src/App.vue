@@ -1,27 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <input v-model="inputValue" />
+  <button @click="handleClick">Add</button>
+
+  <todo-list 
+    :todoListValue="todoListValue"
+    @delete-item="handleDelete"
+  ></todo-list>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import HelloWorld from './components/HelloWorld.vue';
+import TodoList from '@/components/TodoList.vue';
 
 @Options({
-  components: {
-    HelloWorld,
-  },
+  components: {TodoList}
 })
-export default class App extends Vue {}
+class App extends Vue {
+
+  inputValue = "";
+  todoListValue: string[] = [];
+
+  handleClick() {
+    this.todoListValue.push(this.inputValue);
+    this.inputValue = "";
+  }
+
+  handleDelete(index: number) {
+    this.todoListValue.splice(index, 1);
+  }
+
+
+}
+
+export default App;
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
