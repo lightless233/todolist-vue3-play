@@ -5,7 +5,14 @@
   <todo-list 
     :todoListValue="todoListValue"
     @delete-item="handleDelete"
-  ></todo-list>
+  >
+    <template #before="slotProps">
+      <button @click="handleDelete(slotProps.index)">Delete</button>
+    </template>
+    <template #="slotProps">
+      {{slotProps.item}}
+    </template>
+  </todo-list>
 </template>
 
 <script lang="ts">
