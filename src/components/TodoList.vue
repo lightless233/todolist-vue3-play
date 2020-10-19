@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options, prop } from "vue-class-component";
+import { Vue, prop } from "vue-class-component";
 
 class Props {
   todoListValue = prop<string[]>({ default: [] });
