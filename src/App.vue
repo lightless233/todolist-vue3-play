@@ -16,10 +16,11 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { Options, prop, Vue } from 'vue-class-component';
 import axios from "./utils/axios";
 
-import TodoList from '@/components/TodoList.vue';
+// import TodoList from '@/components/TodoListClass.vue';
+import TodoList from '@/components/TodoListNormal.vue';
 
 @Options({
   components: {TodoList}
@@ -43,7 +44,6 @@ class App extends Vue {
     const data = response.data;
     this.todoListValue = data;
   }
-
 
 }
 
