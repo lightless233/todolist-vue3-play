@@ -21,6 +21,10 @@ export default defineComponent({
         handleDelete(index: number) {
             this.$emit("delete-item", index);
         }
+    },
+
+    setup(props, context) {
+        console.log(context);
     }
 
 });
