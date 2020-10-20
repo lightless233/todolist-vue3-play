@@ -1,34 +1,40 @@
 <template>
-  <input v-model="inputValue" />
-  <button @click="handleClick">Add</button>
+  <div style="margin-left: 10px; margin-top: 10px">
+    <div style="margin-bottom: 20px">
+      <a-input
+        v-model="inputValue"
+        placeholder="Basic usage"
+        style="width: 300px"
+      />
+      <a-button type="primary" @click="handleClick" style="margin-left: 10px">Add</a-button>
+    </div>
 
-  <todo-list 
-    :todoListValue="todoListValue"
-    @delete-item="handleDelete"
-  >
-    <template #before="slotProps">
-      <button @click="handleDelete(slotProps.index)">Delete</button>
-    </template>
-    <template #="slotProps">
-      {{slotProps.item}}
-    </template>
-  </todo-list>
+    <todo-list :todoListValue="todoListValue" @delete-item="handleDelete">
+      <template #before="slotProps">
+        <a-button type="danger" @click="handleDelete(slotProps.index)">Delete</a-button>
+      </template>
+      <template #="slotProps">
+        <span style="margin-left: 10px">{{ slotProps.item }}</span>
+      </template>
+    </todo-list>
+  </div>
 </template>
 
 <script lang="ts">
-import { Options, prop, Vue } from 'vue-class-component';
+import { Options, prop, Vue } from "vue-class-component";
 import axios from "./utils/axios";
 
 // import TodoList from '@/components/TodoListClass.vue';
-import TodoList from '@/components/TodoListNormal.vue';
+import TodoList from "@/components/TodoListNormal.vue";
+import zhCN from "ant-design-vue/es/locale/zh_CN";
 
 @Options({
-  components: {TodoList}
+  components: { TodoList },
 })
 class App extends Vue {
-
   inputValue = "";
   todoListValue: string[] = [];
+  locale = zhCN;
 
   handleClick() {
     this.todoListValue.push(this.inputValue);
@@ -44,11 +50,9 @@ class App extends Vue {
     const data = response.data;
     this.todoListValue = data;
   }
-
 }
 
 export default App;
-
 </script>
 
 <style>

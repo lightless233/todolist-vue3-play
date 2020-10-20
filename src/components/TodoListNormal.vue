@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="(item, index) in todoListValue" :key="index">
+    <li v-for="(item, index) in todoListValue" :key="index" style="margin-bottom: 10px">
       <!-- <button @click="handleDelete(index)">Delete</button> -->
       <slot name="before" :index="index"></slot>
       <slot :item="item"></slot>
