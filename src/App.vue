@@ -17,6 +17,8 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import axios from "./utils/axios";
+
 import TodoList from '@/components/TodoList.vue';
 
 @Options({
@@ -34,6 +36,12 @@ class App extends Vue {
 
   handleDelete(index: number) {
     this.todoListValue.splice(index, 1);
+  }
+
+  async mounted() {
+    const response = await axios.get("todo.json");
+    const data = response.data;
+    this.todoListValue = data;
   }
 
 
