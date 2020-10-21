@@ -1,13 +1,16 @@
 <template>
-  <input v-model="inputValue" />
-  <button @click="handleClick">Add</button>
+  <!-- <input v-model="inputValue" />
+  <button @click="handleClick">Add</button> -->
+  <el-input v-model="inputValue" placeholder="todo list" style="width: 300px"></el-input>
+  <el-button type="primary" @click="handleClick">Add</el-button>
 
   <todo-list 
     :todoListValue="todoListValue"
     @delete-item="handleDelete"
   >
     <template #before="slotProps">
-      <button @click="handleDelete(slotProps.index)">Delete</button>
+      <!-- <button @click="handleDelete(slotProps.index)">Delete</button> -->
+      <el-button type="danger" @click="handleDelete(slotProps.index)">Remove</el-button>
     </template>
     <template #="slotProps">
       {{slotProps.item}}
