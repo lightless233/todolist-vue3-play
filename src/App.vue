@@ -26,7 +26,6 @@ import axios from "./utils/axios";
 
 // import TodoList from '@/components/TodoListClass.vue';
 import TodoList from "@/components/TodoListNormal.vue";
-import zhCN from "ant-design-vue/es/locale/zh_CN";
 
 @Options({
   components: { TodoList },
@@ -34,7 +33,6 @@ import zhCN from "ant-design-vue/es/locale/zh_CN";
 class App extends Vue {
   inputValue = "";
   todoListValue: string[] = [];
-  locale = zhCN;
 
   handleClick() {
     this.todoListValue.push(this.inputValue);
